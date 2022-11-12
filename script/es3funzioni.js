@@ -13,9 +13,9 @@ form.addEventListener("submit", function(e){
 
     let ore = parseInt(inputTextOre.value)
     let minuti = parseInt(inputTextMinuti.value)
-    let mseconds = calcMilliseconds(ore, minuti)
+    let mseconds = calcMilliseconds(minuti, ore)
 
     let output = document.querySelector("#output")
 
-    output.innerHTML = `in ${ore} minuti e ${minuti} ore ci sono ${mseconds} millisecondi`
+    output.innerHTML = `in ${minuti} minuti e ${ore} ore ci sono ${mseconds} millisecondi`
 })
