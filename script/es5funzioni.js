@@ -27,6 +27,9 @@ form.addEventListener("submit", function (e) {
 	let ore = parseInt(inputTextOre.value);
 	let minuti = parseInt(inputTextMinuti.value);
 
+	let output1 = document.querySelector("#p1");
+	let output2 = document.querySelector("#p2");
+	let output3 = document.querySelector("#p3");
 	let output = document.querySelector("#output");
 
 	let oraNewYork, oraMosca, oraTokyo;
@@ -36,14 +39,14 @@ form.addEventListener("submit", function (e) {
 	tzMo = 1;
 	tzTo = 9;
 
-	if (ora >= 0 && ora <= 24 && minuti >= 0 && minuti < 60) {
-		oraNewYork = calcTimeZone(ora, tzNY);
-		oraMosca = calcTimeZone(ora, tzMo);
-		oraTokyo = calcTimeZone(ora, tzTo);
+	if (ore >= 0 && ore <= 24 && minuti >= 0 && minuti < 60) {
+		oraNewYork = calcTimeZone(ore, tzNY);
+		oraMosca = calcTimeZone(ore, tzMo);
+		oraTokyo = calcTimeZone(ore, tzTo);
 
-		output.innerHTML = `l'ora a New York è: ${oraNewYork}:${minuti}`;
-		output.innerHTML = `l'ora a Tokyo è: ${oraTokyo}:${minuti}`;
-		output.innerHTML = `l'ora a Mosca è: ${oraMosca}:${minuti}`;
+		output1.innerHTML = `l'ora a New York è: ${oraNewYork}: ${minuti}`;
+		output2.innerHTML = `l'ora a Tokyo è: ${oraTokyo}:${minuti}`;
+		output3.innerHTML = `l'ora a Mosca è: ${oraMosca}:${minuti}`;
 	} else {
 		output.innerHTML = "ora e minuti non corretti"
 	}
