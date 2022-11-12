@@ -5,11 +5,18 @@ function convertTemp(tempF) {
 	return tempC;
 }
 
-let temperaturaF = prompt("inserisci temperatura in faren.");
+let form = document.querySelector("#myForm")
 
-temperaturaF = parseFloat(temperaturaF)
-let temperaturaC
+form.addEventListener("submit", function(e){
 
-temperaturaC = convertTemp(temperaturaF)
+	e.preventDefault()
 
-console.log(`la temperatura in gradi F --> ${temperaturaF}, in gradi C è --> ${temperaturaC}`)
+	let inputText = document.querySelector("#user_input")
+
+	let temperaturaF = parseFloat(inputText.value)
+	let temperaturaC = convertTemp(temperaturaF)
+
+	let output = document.querySelector("#output");
+	output.innerHTML = `la temperatura in gradi F --> ${temperaturaF}, in gradi C è --> ${temperaturaC}`
+	
+})

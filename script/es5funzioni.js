@@ -10,34 +10,41 @@
 
 function calcTimeZone(h, tz) {
 	let y = h + tz;
-	let c = 24 -h;
+	let c = 24 - h;
 
 	let oraFusa = (h + c + y) % 24;
 
 	return oraFusa;
 }
 
-let ora = prompt("inserire un ora");
-let minuti = prompt("inserire minuti");
+let form = document.querySelector("#myForm");
 
-ora = parseInt(ora);
-minuti = parseInt(minuti);
+form.addEventListener("submit", function (e) {
+	e.preventDefault();
+	let inputTextOre = document.querySelector("#user_input_ore");
+	let inputTextMinuti = document.querySelector("#user_input_minuti");
 
-let oraNewYork, oraMosca, oraTokyo;
-let tzNY, tzMo, tzTo;
+	let ore = parseInt(inputTextOre.value);
+	let minuti = parseInt(inputTextMinuti.value);
 
-tzNY = -6;
-tzMo = 1;
-tzTo = 9;
+	let output = document.querySelector("#output");
 
-if (ora >= 0 && ora <= 24 && minuti >= 0 && minuti < 60) {
-	oraNewYork = calcTimeZone(ora, tzNY);
-	oraMosca = calcTimeZone(ora, tzMo);
-	oraTokyo = calcTimeZone(ora, tzTo);
+	let oraNewYork, oraMosca, oraTokyo;
+	let tzNY, tzMo, tzTo;
 
-	console.log(`l'ora a New York è: ${oraNewYork}:${minuti}`);
-	console.log(`l'ora a Tokyo è: ${oraTokyo}:${minuti}`);
-	console.log(`l'ora a Mosca è: ${oraMosca}:${minuti}`);
-} else {
-	console.log("ora e minuti non corretti");
-}
+	tzNY = -6;
+	tzMo = 1;
+	tzTo = 9;
+
+	if (ora >= 0 && ora <= 24 && minuti >= 0 && minuti < 60) {
+		oraNewYork = calcTimeZone(ora, tzNY);
+		oraMosca = calcTimeZone(ora, tzMo);
+		oraTokyo = calcTimeZone(ora, tzTo);
+
+		output.innerHTML = `l'ora a New York è: ${oraNewYork}:${minuti}`;
+		output.innerHTML = `l'ora a Tokyo è: ${oraTokyo}:${minuti}`;
+		output.innerHTML = `l'ora a Mosca è: ${oraMosca}:${minuti}`;
+	} else {
+		output.innerHTML = "ora e minuti non corretti"
+	}
+});
