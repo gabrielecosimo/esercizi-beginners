@@ -1,5 +1,5 @@
 function giorniDelMese(month) {
-  let monthDays;
+  let monthDays = -1;
   switch (month) {
     case "febbraio":
       monthDays = 28;
@@ -30,8 +30,27 @@ function giorniDelMese(month) {
   return monthDays;
 }
 
-let mese = prompt("inserisci un mese: ")
-let nDays
-nDays = giorniDelMese(mese.toLowerCase());
 
-console.log(`i giorni di ${mese} sono ${nDays}`)
+
+let form = document.querySelector("#myForm")
+
+form.addEventListener("submit", function(e){
+  
+  e.preventDefault()
+
+  let inputText = document.querySelector("#user_input")
+  let nDays = giorniDelMese(inputText.value.toLowerCase());
+
+  let output = document.querySelector("#output")
+
+  output.innerHTML = nDays === -1 ? "mese non valido" : `il mese ${inputText.value.toLowerCase()} ha ${nDays} giorni`
+  /*
+    equivalente di:
+    if(nDays === -1){
+      output.innerHTML = "mese non valido"
+    }else{
+      output.innerHTML =  `il mese ${inputText.value.toLowerCase()} ha ${nDays} giorni`
+    }
+  
+  */
+})
