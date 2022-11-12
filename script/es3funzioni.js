@@ -3,9 +3,19 @@ function calcMilliseconds(minutes, ore) {
     return mseconds
 }
 
-let m = prompt("inserisci un certo n di minuti")
-let o = prompt("inserisci un certo n di ore")
-let mseconds = calcMilliseconds(m, ore)
-console.log(`in ${m} minuti e ${ore} ore ci sono ${ms} millisecondi`)
+let form = document.querySelector("#myForm")
 
-//funzione pura se non condivide variabili con l'esterno
+form.addEventListener("submit", function(e){
+
+    e.preventDefault()
+    let inputTextOre = document.querySelector("#user_input_ore")
+    let inputTextMinuti = document.querySelector("#user_input_minuti")
+
+    let ore = parseInt(inputTextOre.value)
+    let minuti = parseInt(inputTextMinuti.value)
+    let mseconds = calcMilliseconds(ore, minuti)
+
+    let output = document.querySelector("#output")
+
+    output.innerHTML = `in ${ore} minuti e ${minuti} ore ci sono ${mseconds} millisecondi`
+})
